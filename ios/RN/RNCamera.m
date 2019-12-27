@@ -1295,6 +1295,11 @@ BOOL _sessionInterrupted = NO;
 
             else if ([self.session canAddInput:audioDeviceInput]) {
                 [self.session addInput:audioDeviceInput];
+                
+                 // IMPORTANT: - use application configured audio session
+                self.session.usesApplicationAudioSession = true;
+                self.session.automaticallyConfiguresApplicationAudioSession = false;
+
                 self.audioCaptureDeviceInput = audioDeviceInput;
 
                 // inform that audio has been resumed
